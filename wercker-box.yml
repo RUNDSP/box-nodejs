@@ -1,5 +1,5 @@
 name : nodejs
-version : 1.4.2
+version : 1.4.3
 description: Latest NodeJS version with Avro
 inherits : wercker/ubuntu12.04-nodejs0.10@1.6.0
 type : main
@@ -39,6 +39,6 @@ default-build:
 
 script: |
   sudo apt-get update
-  sudo apt-get install -y libfl-dev flex bison libboost-dev
+  sudo apt-get install -y libfl-dev flex bison libbz2-dev libboost-dev libboost-all-dev
   curl -O https://s3.amazonaws.com/run-tarballs/avro-cpp_precise-1.7.7-run1_amd64.deb
   sudo dpkg -i avro-cpp_precise-1.7.7-run1_amd64.deb
