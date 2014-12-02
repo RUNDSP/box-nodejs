@@ -1,11 +1,12 @@
 name : nodejs
-version : 1.4.0
-description: Latest NodeJS version
+version : 1.4.1
+description: Latest NodeJS version with Avro 
 inherits : wercker/ubuntu12.04-nodejs0.10@1.6.0
 type : main
 platform : ubuntu@12.04
 keywords:
   - nodejs
+  - avro
 box-detect:
   priority : 1000
   version :
@@ -35,10 +36,12 @@ default-build:
               code: |
                 echo "node version $(node -v) running"
                 echo "npm version $(npm -v) running"
+          # Step to ensure Avro is installed
           - script:
               name: ensure avro dependancies are installed
               code: |
-                sudo apt-get install -Y libfl-dev flex bison libboost-dev
+                sudo apt-get update
+                sudo apt-get install -y libfl-dev flex bison libboost-dev
                 curl -O https://s3.amazonaws.com/run-tarballs/avro-cpp_precise-1.7.7-run1_amd64.deb
                 sudo dpkg -i avro-cpp_precise-1.7.7-run1_amd64.deb
 
